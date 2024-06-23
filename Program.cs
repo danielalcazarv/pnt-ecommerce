@@ -1,3 +1,7 @@
+using e_commerce.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+
 namespace e_commerce
 {
     public class Program
@@ -6,8 +10,12 @@ namespace e_commerce
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<EcommerceDbContext>( options =>options.UseSqlServer(builder.Configuration["ConnectionStrings:EcommerceDBConnection"]));
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             var app = builder.Build();
 
@@ -23,6 +31,8 @@ namespace e_commerce
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

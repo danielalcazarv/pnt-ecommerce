@@ -1,24 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
-using System.Xml.Linq;
 
-namespace e_commerce.Models
+namespace e_commerce.ViewModels
 {
-    [Index(nameof(Correo),IsUnique = true)]
-    [Index(nameof(DNI), IsUnique= true)]
-    public class Usuario
+    public class RegistroViewModel
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [MaxLength(12, ErrorMessage = "Máx. 12 caracteres")]
+        [Required(ErrorMessage = "Ingreso de DNI Obligatorio")]
         public string DNI { get; set; }
-        
+
         [Required(ErrorMessage = "Ingreso de contraseña Obligatorio")]
         [MaxLength(20, ErrorMessage = "Máx. 20 caracteres")]
+        [DataType(DataType.Password)]
+        [DisplayName("Contraseña")]
         public string Password { get; set; }
-        
-        [Required(ErrorMessage ="Ingreso de nombre Obligatorio")]
-        [MaxLength(50,ErrorMessage ="Máx. 50 caracteres")]
+
+        [Compare("Password", ErrorMessage ="Su contraseña ingresada no es igual")]
+        [DataType(DataType.Password)]
+        [DisplayName("Confirmar Contraseña")]
+        public string ConfirmarPassword { get; set; }
+
+        [Required(ErrorMessage = "Ingreso de nombre Obligatorio")]
+        [MaxLength(50, ErrorMessage = "Máx. 50 caracteres")]
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "Ingreso de apellido Obligatorio")]
@@ -27,6 +31,7 @@ namespace e_commerce.Models
 
         [Required(ErrorMessage = "Ingreso de correo electrónico Obligatorio")]
         [MaxLength(100, ErrorMessage = "Máx. 100 caracteres")]
+        [RegularExpression("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", ErrorMessage = "Por favor ingrese un correo válido")]
         public string Correo { get; set; }
 
         [Required(ErrorMessage = "Ingreso de domicilio Obligatorio")]
@@ -34,11 +39,11 @@ namespace e_commerce.Models
 
         [Required(ErrorMessage = "Ingreso de código postal Obligatorio")]
         [MaxLength(20, ErrorMessage = "Máx. 20 caracteres")]
+        [DisplayName("Código Postal")]
         public string CodigoPostal { get; set; }
 
         [Required(ErrorMessage = "Ingreso de teléfono Obligatorio")]
+        [DisplayName("Teléfono")]
         public int Telefono { get; set; }
-
     }
-
 }
