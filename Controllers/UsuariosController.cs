@@ -160,7 +160,6 @@ namespace e_commerce.Controllers
             return View(usuario);
         }
 
-        /* TODO: VIEWS DE CADA 
         // POST: Usuarios/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -194,6 +193,7 @@ namespace e_commerce.Controllers
             return View(usuario);
         }
 
+        
         // GET: Usuarios/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
@@ -230,7 +230,7 @@ namespace e_commerce.Controllers
         private bool UsuarioExists(string id)
         {
             return _context.Usuarios.Any(e => e.DNI == id);
-        }*/
+        }
 
 
 
