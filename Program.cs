@@ -14,7 +14,7 @@ namespace e_commerce
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             var app = builder.Build();
