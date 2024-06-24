@@ -25,14 +25,14 @@ namespace e_commerce.Controllers
         }
 
         // GET: Usuarios
-        // ****Hay que modificar que es lo que muestra OJO****
+        // TODO ****Hay que modificar FRONT que es lo que muestra OJO****
         public async Task<IActionResult> Index()
         {
             return View(await _context.Usuarios.ToListAsync());
         }
 
         // GET: Usuarios/Details/5
-        // ****Hay que modificar que es lo que muestra OJO****
+        // TODO ****Hay que modificar FRONT que es lo que muestra OJO****
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -135,9 +135,6 @@ namespace e_commerce.Controllers
         }
 
 
-
-
-
         // GET: Página segura 
         //****Cambiar para que redireccione a productos****
         [Authorize]
@@ -163,7 +160,7 @@ namespace e_commerce.Controllers
             return View(usuario);
         }
 
-        /*
+        /* TODO: VIEWS DE CADA 
         // POST: Usuarios/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
