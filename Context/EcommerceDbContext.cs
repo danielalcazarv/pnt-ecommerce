@@ -18,7 +18,7 @@ namespace e_commerce.Context
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<e_commerce.ViewModels.LoginViewModel> LoginViewModel { get; set; } = default!;
-        public DbSet<e_commerce.ViewModels.RegistroViewModel> RegistroViewModel { get; set; } = default!;
+        
+        public DbSet<Producto> Productos { get; set; }
     }
 }
