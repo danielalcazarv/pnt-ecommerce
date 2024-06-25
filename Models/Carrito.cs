@@ -8,8 +8,10 @@ namespace e_commerce.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdCarrito { get; set; }
-        public string IdUsuario { get; set; }
-        public double Total { get; set; }
+
+        public List<CarritoItem> ItemsDeCarrito { get; set; }
+        public double? PrecioTotal { get; set; }
+        public int? CantTotal { get; set; }
         
         
     }
